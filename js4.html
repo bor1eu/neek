@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form>
+        <span>ФИО</span>
+        <br>
+        <input type="text" name="name" size="40">
+        <br>
+        <span>Телефон</span>
+        <br>
+        <input type="tel" name="phone" size="40">
+        <button type="button" name="addbtn" id="addbtn">+</button>
+        <br>
+        <span>Комментарий</span>
+        <br>
+        <textarea name="comment" cols="50" rows="10"></textarea>
+        <br>
+        <button type="submit" name="send" onsubmit="someone.send()">Отправить</button>
+    </form>
+    <script>
+        class Person {
+            constructor (name = "Ivan", phone = "+79876541122", comment = "") {
+                this.name = name
+                this.phone = phone
+                this.comment = comment
+            }
+
+            send () {
+                document.querySelector("input[type=text]").value = this.name
+                document.querySelector("input[type=tel]").value = this.phone
+                document.querySelector("textarea").value = this.comment
+                this.sendData ('localhost', this)
+            }
+
+            sendData (url, data) {
+                return fetch(url, {
+                    method: 'PUT',
+                    headers: {
+                        "Content-Type": "application/json"
+                    },
+                    body: JSON.stringify(data)
+                }).then(d => d.json())
+            }
+        }
+
+        let someone = new Person ("Petr", "+1234567788", "A big guy")
+
+        document.getElementById("addbtn").addEventListener('click', (evt) => {
+            if (evt.target.name == "addbtn") addTel()
+        })
+
+        document.querySelector("form > button[type=submit]").addEventListener('click', (evt) => {
+            // evt.preventDefault()
+            if (evt.target.name == "send") {
+                someone.send()
+                evt.preventDefault()
+            }
+        })
+
+    </script>
+</body>
+</html>

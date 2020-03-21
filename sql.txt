@@ -1,0 +1,22 @@
+Задачи:
+Вывести список сотрудников, получающих максимальную заработную плату в своем отделе
+SELECT DISTINCT NAME, DEPARTMENT_ID FROM EMPLOYEE GROUP BY DEPARTMENT_ID ORDER BY MAX(SALARY)
+
+Вывести список ID отделов, количество сотрудников в которых не превышает 3 человек
+
+Найти список ID отделов с максимальной суммарной зарплатой сотрудников
+
+Добавить в БД новый отдел
+INSERT INTO DEPARTMENT (NAME) VALUES ('New Department')
+
+Добавить в новый отдел троих новых сотрудников и одного руководителя (с учетом заполнения всех полей)
+INSERT INTO EMPLOYEE (ID, DEPARTMENT_ID, CHIEF_ID, NAME, SALARY) VALUES (1, 'Department 1', 1, 'Ivanov', 100000)
+INSERT INTO EMPLOYEE (ID, DEPARTMENT_ID, CHIEF_ID, NAME, SALARY) VALUES (2, 'Department 1', 1, 'Petrov', 20000)
+INSERT INTO EMPLOYEE (ID, DEPARTMENT_ID, CHIEF_ID, NAME, SALARY) VALUES (3, 'Department 1', 1, 'Semenov', 30000)
+INSERT INTO EMPLOYEE (ID, DEPARTMENT_ID, CHIEF_ID, NAME, SALARY) VALUES (4, 'Department 1', 1, 'Sergeev', 35000)
+
+Удалить отдел и всех сотрудников, привязанных к этому отделу
+DELETE FROM EMPLOYEE WHERE DEPARTMENT_ID = 1
+DELETE FROM DEPARTMENT WHERE ID = 1
+
+Обновить ID любого отдела так, чтобы “не потерять” работающих в нем сотрудников

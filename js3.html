@@ -20,13 +20,17 @@
         <br>
         <textarea name="comment" cols="50" rows="10"></textarea>
         <br>
-        <button type="submit" onsubmit="send">Отправить</button>
+        <button type="submit" name="send" onsubmit="send">Отправить</button>
     </form>
     <script>
         let phoneNums = 1
 
         document.getElementById("addbtn").addEventListener('click', evt => {
             if (evt.target.name == "addbtn") addTel()
+        })
+
+        document.querySelector("form > button[type=submit]").addEventListener('click', evt => {
+            if (evt.target.name == "send") evt.preventDefault()
         })
 
         function addTel() {
@@ -42,8 +46,9 @@
             document.body.childNodes[1].insertBefore(document.createElement("br"), btn)
             document.body.childNodes[1].insertBefore(elem2, btn)
         }
-        function send() {
 
+        function send() {
+            console.log(event)
         }
     </script>
 </body>
