@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        const CHAR = "O"
+        const NUM_WIDTH = 80
+        const NUM_HEIGHT = 60
+        const STRING = CHAR.repeat(NUM_WIDTH)
+        document.body.style = " background-color: black; font-size: 10px; font-family: Arial, sans-serif;"
+        for (let x = 1; x <= NUM_HEIGHT; x++) {
+            let elem = document.createElement("div")
+            elem.innerText = STRING
+            if ( x < (NUM_HEIGHT / 3) ) {
+                elem.style = " color: #fff; "
+            } else if ( x < (2 * NUM_HEIGHT / 3) ) {
+                elem.style = " color: #00f; "
+            } else {
+                elem.style = " color: #f00; " 
+            }
+            document.body.append(elem)
+        }
+    </script>
+</body>
+</html>

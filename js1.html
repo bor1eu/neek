@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        let a = [1,4,5,2,6,2,3,7,9,8]
+        const arrSort = (entryArray, sortMode) => {
+            let result = [...entryArray]
+            for (let x = 1; x < result.length; x++) {
+                if (((sortMode === "up") && (result[x] < result[x-1])) ||
+                    ((sortMode === "down") && (result[x] > result[x-1]))) {
+                    [result[x-1], result[x]] = [result[x], result[x-1]]
+                    result = arrSort(result, sortMode)
+                }
+            }
+            return result
+        }
+        console.log(a)
+        console.log(arrSort(a, "up"))
+        console.log(a)
+        console.log(arrSort(a, "down"))
+        console.log(a)
+    </script>
+</body>
+</html>

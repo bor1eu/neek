@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form>
+        <span>ФИО</span>
+        <br>
+        <input type="text" name="name" required size="40">
+        <br>
+        <span>Телефон</span>
+        <br>
+        <input type="tel" name="phone" required size="40">
+        <button type="button" name="addbtn" id="addbtn">+</button>
+        <br>
+        <span>Комментарий</span>
+        <br>
+        <textarea name="comment" cols="50" rows="10"></textarea>
+        <br>
+        <button type="submit" onsubmit="send">Отправить</button>
+    </form>
+    <script>
+        let phoneNums = 1
+
+        document.getElementById("addbtn").addEventListener('click', evt => {
+            if (evt.target.name == "addbtn") addTel()
+        })
+
+        function addTel() {
+            let btn = document.getElementById("addbtn")
+            let elem1 = document.createElement("span")
+            elem1.innerText = "Телефон " + (++phoneNums)
+            let elem2 = document.createElement("input")
+            elem2.type = "tel"
+            elem2.name = "phone" + phoneNums
+            elem2.size = "40"
+            document.body.childNodes[1].insertBefore(document.createElement("br"), btn)
+            document.body.childNodes[1].insertBefore(elem1, btn)
+            document.body.childNodes[1].insertBefore(document.createElement("br"), btn)
+            document.body.childNodes[1].insertBefore(elem2, btn)
+        }
+        function send() {
+
+        }
+    </script>
+</body>
+</html>
